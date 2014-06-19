@@ -23,7 +23,13 @@ git reset --hard [版本号]
 git reflog
 #查看工作区和版本库里面最新版本的区别
 git diff HEAD -- [fileName]
-#撤销修改 回到最近一次git commit或git add
+#撤销工作区修改 回到最近一次git commit或git add
 git checkout -- [fileName]
-#撤销暂存区的修改 HEAD表示最新的版本
+#撤销暂存区修改 HEAD表示最新的版本
 git reset HEAD [fileName]
+#工作区文件删除
+rm [fileName]
+#git文件删除 需要commit
+#git rm [fileName]
+#误删的文件恢复
+git checkout -- [fileName]
