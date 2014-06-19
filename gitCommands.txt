@@ -1,0 +1,12 @@
+###此文档字符集：UTF-8无BOM格式
+#创建目录
+cd learngit
+#使用编辑器新建文件
+#在Git中添加文件
+git add [fileName]
+#查看文件状态
+git status
+#提交改变
+git commit -m "[comment]"
+#比较差异或文件改动
+git diff [fileName]
