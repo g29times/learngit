@@ -10,3 +10,14 @@ git status
 git commit -m "[comment]"
 #比较差异或文件改动
 git diff [fileName]
+#查看文件内容
+cat [fileName]
+#查看提交历史 从最近到最远
+git log
+#版本 HEAD表示当前版本 上一个版本就是HEAD^ 往上100个版本HEAD~100
+#回退上一个版本
+git reset --hard HEAD^
+#前滚到未来版本
+git reset --hard [版本号]
+#查看命令历史 命令版本号
+git reflog
