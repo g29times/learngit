@@ -21,3 +21,9 @@ git reset --hard HEAD^
 git reset --hard [版本号]
 #查看命令历史 命令版本号
 git reflog
+#查看工作区和版本库里面最新版本的区别
+git diff HEAD -- [fileName]
+#撤销修改 回到最近一次git commit或git add
+git checkout -- [fileName]
+#撤销暂存区的修改 HEAD表示最新的版本
+git reset HEAD [fileName]
