@@ -1,10 +1,17 @@
 ###此文档字符集：UTF-8无BOM格式
 #创建目录
+mkdir learngit
+#进入目录
 cd learngit
-#使用编辑器新建文件
-#在Git中添加文件
+#显示目录
+pwd
+#使用编辑器新建和编辑文本文件
+<text operation>
+#Git接管仓库
+git init
+#往缓冲区中添加文件 注意区分大小写
 git add [fileName]
-#查看文件状态
+#查看缓存状态
 git status
 #提交改变
 git commit -m "[comment]"
@@ -33,17 +40,52 @@ rm [fileName]
 #git rm [fileName]
 #误删的文件恢复
 git checkout -- [fileName]
+
+--------------------------------------------
+###远程库
 #创建密匙对
 ssh-keygen -t rsa -C [emailAdd]
 #在github等远程仓库add key之后 准备绑定密匙代理
 ssh-agent
 #绑定密匙
-ssh-add .../id_rsa
+ssh-add [path]/id_rsa
 #验证密匙绑定情况 出现You've successfully authenticated则成功
 ssh -T git@github.com
+***BUGS
+	*Permission denied (publickey)
+	***ssh-agent + ssh-add [path]/id_rsa
 #把一个已有的本地仓库与远程库关联
-git remote add origin git@github.com:g29times/learngit.git
+git remote add origin git@github.com:g29times/[repoName].git
 #把本地库的所有内容推送到远程库 -u参数 关联本地和远程master分支
 git push -u origin master
+***以上两步可能因为操作顺序出现BUG
+	*fatal: remote origin already exists
+	***git remote rm origin
+	*error: Could not remove config section
+	***修改gitconfig http://blog.csdn.net/dengjianqiang2011/article/details/9260435
 #本地作了提交后 推送master分支至远程库
 git push origin master
+***BUGS
+	*error:failed to push som refs to
+	***git pull origin master + git push origin master
+	*Couldn't find remote ref master
+	***git remote add origin git@github.com:g29times/[repoName].git
+#从远程库克隆到本地 通过ssh支持的原生git协议速度最快
+git clone [clone URL]
+#列出仓库文件
+ls
+
+--------------------------------------------
+###分支管理
+#创建新的分支 名字是dev -b参数表示创建并切换
+git branch dev + git checkout dev = git checkout -b dev 
+#查看当前分支 带*为正在使用的
+git branch
+#把dev分支的工作成果合并到master分支
+git merge dev
+#删除dev分支
+git branch -d dev
+#查看分支合并图
+git log --graph --pretty=oneline --abbrev-commit
+#合并分支 --no-ff参数 禁用“Fast forward” 可查看分支合并历史
+git merge --no-ff -m "comment" dev
