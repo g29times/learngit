@@ -33,3 +33,17 @@ rm [fileName]
 #git rm [fileName]
 #误删的文件恢复
 git checkout -- [fileName]
+#创建密匙对
+ssh-keygen -t rsa -C [emailAdd]
+#在github等远程仓库add key之后 准备绑定密匙代理
+ssh-agent
+#绑定密匙
+ssh-add .../id_rsa
+#验证密匙绑定情况 出现You've successfully authenticated则成功
+ssh -T git@github.com
+#把一个已有的本地仓库与远程库关联
+git remote add origin git@github.com:g29times/learngit.git
+#把本地库的所有内容推送到远程库 -u参数 关联本地和远程master分支
+git push -u origin master
+#本地作了提交后 推送master分支至远程库
+git push origin master
